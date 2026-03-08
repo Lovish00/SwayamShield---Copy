@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  /* Medical-grade color palette */
+  --color-primary: #2563eb;
+  --color-primary-light: #dbeafe;
+  --color-primary-dark: #1d4ed8;
+  
+  --color-green: #10b981;
+  --color-green-light: #d1fae5;
+  
+  --color-red: #ef4444;
+  --color-red-light: #fee2e2;
+  
+  --color-purple: #8b5cf6;
+  --color-purple-light: #ede9fe;
+  
+  --color-amber: #f59e0b;
+  --color-amber-light: #fef3c7;
+  
+  --color-cyan: #06b6d4;
+  --color-cyan-light: #cffafe;
+}
+
+/* Custom base styles */
+@layer base {
+  :root {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: rgba(255,255,255,0.85);
+    --bg-card-solid: #ffffff;
+    --bg-input: #ffffff;
+    --bg-hover: rgba(0,0,0,0.03);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-default: #e2e8f0;
+    --border-focus: #2563eb;
+    --gradient-hero: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(16,185,129,0.06));
+    --gradient-primary: linear-gradient(135deg, #2563eb, #1d4ed8);
+    --gradient-green: linear-gradient(135deg, #10b981, #059669);
+    --gradient-purple: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  [data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: rgba(30,41,59,0.85);
+    --bg-card-solid: #1e293b;
+    --bg-input: #1e293b;
+    --bg-hover: rgba(255,255,255,0.05);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-default: #334155;
+    --border-focus: #3b82f6;
+    --gradient-hero: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(16,185,129,0.1));
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  input, textarea, select, button { font-family: inherit; }
+
+  a { text-decoration: none; color: inherit; }
+}
+
+/* Utility classes */
+@layer utilities {
+  .glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-default);
+  }
+  
+  .card-base {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-default);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  
+  .card-base:hover {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .skeleton {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-hover) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+
+/* Chart.js responsive override */
+.chartjs-render-monitor { animation: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }

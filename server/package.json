@@ -1,0 +1,24 @@
+{
+  "name": "swayamshield-server",
+  "version": "1.0.0",
+  "description": "SwayamShield Health Management Platform — Backend API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "db:init": "node src/config/initDb.js",
+    "db:seed": "node src/config/seedDb.js",
+    "gemini:check": "node src/config/checkGemini.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0",
+    "uuid": "^11.1.0"
+  }
+}
